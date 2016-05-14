@@ -9,6 +9,8 @@ bandwidth via leave-one-out cross-validation, which is considerably faster
 that an explicit grid-search as required by SVR. The main disadvantages are
 that it does not support regularization and is not robust to outliers.
 """
+from __future__ import print_function
+
 print(__doc__)
 
 import time
@@ -41,12 +43,12 @@ svr = GridSearchCV(SVR(kernel='rbf'), cv=5,
 kr = KernelRegression(kernel="rbf", gamma=np.logspace(-2, 2, 10))
 t0 = time.time()
 y_svr = svr.fit(X, y).predict(X)
-print "SVR complexity and bandwidth selected and model fitted in %.3f s" \
-    % (time.time() - t0)
+print("SVR complexity and bandwidth selected and model fitted in %.3f s" \
+    % (time.time() - t0))
 t0 = time.time()
 y_kr = kr.fit(X, y).predict(X)
-print "KR including bandwith fitted in %.3f s" \
-    % (time.time() - t0)
+print("KR including bandwith fitted in %.3f s" \
+    % (time.time() - t0))
 
 ###############################################################################
 # Visualize models
